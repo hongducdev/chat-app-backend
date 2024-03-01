@@ -1,6 +1,6 @@
 import bcryptjs from 'bcryptjs';
 import User from '../models/user.model.js';
-import generateTokenAndSetCookie from '../utils/generateToken.js';
+import generateToken from '../utils/generateToken.js';
 
 export const signup = async (req, res) => {
    try {
@@ -31,7 +31,13 @@ export const signup = async (req, res) => {
          profilePic: gender === 'male' ? boyProfilePic : girlProfilePic,
       });
 
-      await generateTokenAndSetCookie(newUser._id, res);
+      const token = await generateToken(newUser._id, res);
+      res.cookie('jwt', token, {
+         maxAge: 30 * 24 * 60 * 60 * 1000,
+         httpOnly: true,
+         sameSite: 'none',
+         secure: false,
+      });
       await newUser.save();
 
       res.status(200).json({
@@ -63,7 +69,13 @@ export const login = async (req, res) => {
          return res.status(400).json({ error: 'Password is incorrect' });
       }
 
-      await generateTokenAndSetCookie(user._id, res);
+      const token = await generateToken(user._id, res);
+      res.cookie('jwt', token, {
+         maxAge: 30 * 24 * 60 * 60 * 1000,
+         httpOnly: true,
+         sameSite: 'none',
+         secure: false,
+      });
 
       res.status(200).json({
          _id: user._id,

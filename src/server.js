@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 4090;
 dotenv.config();
 
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
+app.use(express.urlencoded({ extended: true })); // to parse the incoming requests with urlencoded payloads (from req.body)
 app.use(cookieParser());
 app.use(
    cors({
