@@ -9,6 +9,7 @@ const io = new Server(server, {
    cors: {
       origin: ['http://localhost:4953'],
       methods: ['GET', 'POST'],
+      credentials: true,
    },
 });
 
