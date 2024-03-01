@@ -34,9 +34,7 @@ export const signup = async (req, res) => {
       const token = await generateToken(newUser._id, res);
       res.cookie('jwt', token, {
          maxAge: 30 * 24 * 60 * 60 * 1000,
-         httpOnly: true,
-         sameSite: 'none',
-         secure: false,
+         httpOnly: false,
       });
       await newUser.save();
 
@@ -72,9 +70,7 @@ export const login = async (req, res) => {
       const token = await generateToken(user._id, res);
       res.cookie('jwt', token, {
          maxAge: 30 * 24 * 60 * 60 * 1000,
-         httpOnly: true,
-         sameSite: 'none',
-         secure: false,
+         httpOnly: false,
       });
 
       res.status(200).json({
