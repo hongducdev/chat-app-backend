@@ -26,12 +26,29 @@ app.use(
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger-output.json' with { type: "json" };
 
+const customSwaggerOptions = {
+   explorer: true,
+   swaggerOptions: {
+     authAction: {
+       JWT: {
+         name: 'JWT',
+         schema: {
+           type: 'apiKey',
+           in: 'header',
+           name: 'Authorization',
+           description: ''
+         },
+         value: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWUxZmM3NGRhYzUzYmEyMTUxZDUxNzMiLCJpYXQiOjE3MDkzNjk4OTMsImV4cCI6MTcxMTk2MTg5M30.flkjmWYYtoh6yCxh5I3wU5H0X4AjO9Pcv4_6JPX_HZQ'
+       }
+     }
+   }
+ }
 
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/users', userRoutes);
-app.use('/test', testRoutes)
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use('/test', testRoutes)
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument, customSwaggerOptions));
 
 server.listen(PORT, () => {
    connectToMongoDB();

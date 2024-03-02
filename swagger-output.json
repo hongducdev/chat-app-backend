@@ -11,7 +11,7 @@
     "http"
   ],
   "paths": {
-    "/test/api/auth/signup": {
+    "/api/auth/signup": {
       "post": {
         "description": "",
         "parameters": [
@@ -53,7 +53,7 @@
         }
       }
     },
-    "/test/api/auth/login": {
+    "/api/auth/login": {
       "post": {
         "description": "",
         "parameters": [
@@ -86,7 +86,7 @@
         }
       }
     },
-    "/test/api/auth/logout": {
+    "/api/auth/logout": {
       "post": {
         "description": "",
         "responses": {
@@ -99,7 +99,7 @@
         }
       }
     },
-    "/test/api/messages/{id}": {
+    "/api/messages/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -120,7 +120,7 @@
         }
       }
     },
-    "/test/api/messages/send/{id}": {
+    "/api/messages/send/{id}": {
       "post": {
         "description": "",
         "parameters": [
@@ -153,7 +153,7 @@
         }
       }
     },
-    "/test/api/users": {
+    "/api/users/": {
       "get": {
         "description": "",
         "responses": {
