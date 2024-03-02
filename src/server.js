@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true })); // to parse the incoming reques
 app.use(cookieParser());
 app.use(
    cors({
-      origin: ['http://localhost:4953', 'http://54.206.22.98:4953'],
+      origin: ['http://localhost:4953', 'http://chatapp.hongduccodedao.io.vn:4953'],
       credentials: true,
    })
 );

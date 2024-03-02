@@ -7,7 +7,10 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
    cors: {
-      origin: ['http://localhost:4953', 'http://54.206.22.98:4953'],
+      origin: [
+         'http://localhost:4953',
+         'http://chatapp.hongduccodedao.io.vn:4953',
+      ],
       methods: ['GET', 'POST'],
       credentials: true,
    },
