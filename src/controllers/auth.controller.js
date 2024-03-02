@@ -36,7 +36,7 @@ export const signup = async (req, res) => {
          maxAge: 30 * 24 * 60 * 60 * 1000,
          httpOnly: true,
          sameSite: 'none',
-         secure: true,
+         secure: false,
       });
       await newUser.save();
 
