@@ -5,12 +5,13 @@
     "description": "API for chat application",
     "version": "1.0.0"
   },
+  "host": "localhost:4090",
   "basePath": "/",
   "schemes": [
     "http"
   ],
   "paths": {
-    "/api/auth/signup": {
+    "/test/api/auth/signup": {
       "post": {
         "description": "",
         "parameters": [
@@ -52,7 +53,7 @@
         }
       }
     },
-    "/api/auth/login": {
+    "/test/api/auth/login": {
       "post": {
         "description": "",
         "parameters": [
@@ -85,7 +86,7 @@
         }
       }
     },
-    "/api/auth/logout": {
+    "/test/api/auth/logout": {
       "post": {
         "description": "",
         "responses": {
@@ -98,7 +99,7 @@
         }
       }
     },
-    "/api/messages/{id}": {
+    "/test/api/messages/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -119,7 +120,7 @@
         }
       }
     },
-    "/api/messages/send/{id}": {
+    "/test/api/messages/send/{id}": {
       "post": {
         "description": "",
         "parameters": [
@@ -152,7 +153,7 @@
         }
       }
     },
-    "/api/users/": {
+    "/test/api/users": {
       "get": {
         "description": "",
         "responses": {
