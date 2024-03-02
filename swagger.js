@@ -5,7 +5,9 @@ dotenv.config();
 const doc = {
    info: {
       title: 'Chat App API',
-      description: 'API for chat application',
+      description:
+         'API for chat application. Please use login before request data!!!\nUsername: hongducdev\nPassword: 123456',
+      version: '1.3.0',
    },
    host: process.env.HOST,
 };
