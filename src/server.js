@@ -22,6 +22,9 @@ app.use(
       credentials: true,
    })
 );
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from '../swagger-output.json' with { type: "json" };
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
