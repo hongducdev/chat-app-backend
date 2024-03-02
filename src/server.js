@@ -31,7 +31,7 @@ import swaggerDocument from '../swagger-output.json' with { type: "json" };
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/users', userRoutes);
-// app.use('/test', testRoutes)
+app.use('/test', testRoutes)
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 server.listen(PORT, () => {
