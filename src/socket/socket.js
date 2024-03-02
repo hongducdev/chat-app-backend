@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
    cors: {
       origin: [
-         'http://localhost:4953',
+         'http://localhost:5173',
          'http://chatapp.hongduccodedao.io.vn:4953',
       ],
       methods: ['GET', 'POST'],
