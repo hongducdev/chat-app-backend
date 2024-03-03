@@ -10,6 +10,7 @@ const io = new Server(server, {
       origin: [
          'http://localhost:4953',
          'http://chatapp.hongduccodedao.io.vn:4953',
+         'https://chatapp.hongduccodedao.io.vn',
       ],
       methods: ['GET', 'POST'],
       credentials: true,

@@ -19,19 +19,21 @@ app.use(express.urlencoded({ extended: true })); // to parse the incoming reques
 app.use(cookieParser());
 app.use(
    cors({
-      origin: ['http://localhost:4953', 'http://chatapp.hongduccodedao.io.vn:4953'],
+      origin: [
+         'http://localhost:4953',
+         'http://chatapp.hongduccodedao.io.vn:4953',
+         'https://chatapp.hongduccodedao.io.vn',
+      ],
       credentials: true,
    })
 );
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger-output.json' with { type: "json" };
 
-
-
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/users', userRoutes);
-app.use('/test', testRoutes)
+app.use('/test', testRoutes);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 server.listen(PORT, () => {
