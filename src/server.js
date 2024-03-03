@@ -16,7 +16,7 @@ dotenv.config();
 
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
 app.use(express.urlencoded({ extended: true })); // to parse the incoming requests with urlencoded payloads (from req.body)
-app.use(cookieParser());
+
 app.use(
    cors({
       origin: [
@@ -24,9 +24,21 @@ app.use(
          'http://chatapp.hongduccodedao.io.vn:4953',
          'https://chatapp.hongduccodedao.io.vn',
       ],
+      allowedHeaders: [
+         'Authorization',
+         'Content-Type',
+         'Access-Control-Request-Method',
+         'X-Requested-With',
+         'Accept',
+         'Access-Control-Request-Headers',
+         'Origin',
+         'Access-Control-Allow-Headers',
+         'Set-Cookie',
+      ],
       credentials: true,
    })
 );
+app.use(cookieParser());
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger-output.json' with { type: "json" };
 
