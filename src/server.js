@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(
    cors({
       origin: [
-         'http://localhost:4953',
+         'http://localhost:5173',
          'http://chatapp.hongduccodedao.io.vn:4953',
          'https://chatapp.hongduccodedao.io.vn',
       ],
