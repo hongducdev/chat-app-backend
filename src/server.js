@@ -25,28 +25,31 @@ app.use(
          'https://chatapp.hongduccodedao.io.vn',
       ],
       allowedHeaders: [
-         'Authorization',
+         'Access-Control-Allow-Headers',
+         'Origin,Accept',
+         'X-Requested-With',
          'Content-Type',
          'Access-Control-Request-Method',
-         'X-Requested-With',
-         'Accept',
          'Access-Control-Request-Headers',
-         'Origin',
-         'Access-Control-Allow-Headers',
+         'Access-Control-Allow-Origin',
+         'Authorization',
          'Set-Cookie',
       ],
+      methods: ["GET", "POST", "PUT", "DELETE", 'OPTIONS'],
       credentials: true,
+      preflightContinue: true,
+      exposedHeaders: ['Access-Control-Allow-Origin', 'x-auth-token'],
    })
 );
 app.use(cookieParser());
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger-output.json' with { type: "json" };
 
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/users', userRoutes);
 app.use('/test', testRoutes);
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 server.listen(PORT, () => {
    connectToMongoDB();

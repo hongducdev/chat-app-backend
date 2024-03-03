@@ -35,10 +35,10 @@ export const sendMessage = async (req, res) => {
          io.to(receiverSocketId).emit('newMessage', newMessage);
       }
 
-      res.status(201).json(newMessage);
+      return res.status(201).json(newMessage);
    } catch (error) {
       console.log('Error in send message controller', error.message);
-      res.status(500).json({
+      return res.status(500).json({
          error: 'Internal Server Error',
       });
    }
@@ -58,10 +58,10 @@ export const getMessages = async (req, res) => {
       }
 
       const messages = conversation.messages;
-      res.status(200).json(messages);
+      return res.status(200).json(messages);
    } catch (error) {
       console.log('Error in get message controller', error.message);
-      res.status(500).json({
+      return res.status(500).json({
          error: 'Internal Server Error',
       });
    }
