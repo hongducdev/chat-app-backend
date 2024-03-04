@@ -10,6 +10,7 @@ const doc = {
       version: '1.3.0',
    },
    host: process.env.HOST,
+   schemes: ['https', 'http'],
 };
 
 const outputFile = './swagger-output.json';
