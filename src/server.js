@@ -35,7 +35,7 @@ app.use(
          'Authorization',
          'Set-Cookie',
       ],
-      methods: ["GET", "POST", "PUT", "DELETE", 'OPTIONS'],
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       credentials: true,
       preflightContinue: true,
       exposedHeaders: ['Access-Control-Allow-Origin', 'x-auth-token'],
@@ -51,8 +51,8 @@ app.use('/api/messages', messageRoutes);
 app.use('/api/users', userRoutes);
 app.use('/test', testRoutes);
 app.get('/', (req, res) => {
-   res.status(200).json({message: 'OK'})
-})
+   res.status(200).json({ message: 'OK' });
+});
 
 server.listen(PORT, () => {
    connectToMongoDB();
