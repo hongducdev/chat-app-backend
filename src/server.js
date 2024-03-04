@@ -50,6 +50,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/users', userRoutes);
 app.use('/test', testRoutes);
+app.get('/', (req, res) => {
+   res.status(200).json({message: 'OK'})
+})
 
 server.listen(PORT, () => {
    connectToMongoDB();
