@@ -50,7 +50,8 @@ pipeline {
                steps {
                   dir('DevopsChatApp') {
                      script {
-                        sh 'ssh ec2-user@52.76.143.176 whoami'
+                        sh 'ssh ec2-user@52.76.143.176'
+                        sh 'ls -a'
                      }
                   }
                }
