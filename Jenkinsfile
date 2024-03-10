@@ -28,7 +28,7 @@ pipeline {
             }
          }
       }
-      stage('Check branch equal to main then deploy') {
+      stage('Deploy in production environment') {
          when {
             branch 'main'
          }
@@ -42,6 +42,15 @@ pipeline {
                         sh 'sudo docker stop $(docker ps --filter status=running || exists -q) || true'
                         sh 'sudo docker rm $(docker ps -aq) || true'
                         sh 'sudo docker rmi $(docker images -q) || true'
+                     }
+                  }
+               }
+            }
+            stage('SSH to deploy server') {
+               steps {
+                  dir('DevopsChatApp') {
+                     script {
+                        sh 'ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@52.76.143.176 whoami'
                      }
                   }
                }
@@ -69,7 +78,7 @@ pipeline {
             // }
          }
       }
-      stage('Check branch equal to develop then deploy') {
+      stage('Deploy in develop environment') {
          when {
             branch 'develop'
          }
