@@ -50,7 +50,7 @@ pipeline {
                steps {
                   dir('DevopsChatApp') {
                      script {
-                        sh 'ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@52.76.143.176 whoami'
+                        sh 'ssh ec2-user@52.76.143.176 whoami'
                      }
                   }
                }
