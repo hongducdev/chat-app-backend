@@ -8,16 +8,6 @@ pipeline {
       NODE_ENV='development'
    }
    stages{
-      stage('Checkout SCM') {
-         steps {
-            checkout scm
-         }
-      }
-      stage('Cleanup dir') {
-         steps {
-            deleteDir()
-         }
-      }
       stage('Fetch repository') {
          steps {
             dir('DevopsChatApp') {
@@ -33,8 +23,9 @@ pipeline {
             branch 'main'
          }
          stages {
-            stage('Cleanup docker') {
+            stage('') {
                steps {
+                  deleteDir()
                   dir('DevopsChatApp') {
                      script {
                         echo("Code pushed or merged in branch ${env.BRANCH_NAME}")
@@ -46,37 +37,16 @@ pipeline {
                   }
                }
             }
-            stage('SSH to deploy server') {
+            stage('') {
                steps {
                   dir('DevopsChatApp') {
                      script {
                         sh 'ssh ec2-user@52.76.143.176'
-                        sh 'ssh ec2-user@52.76.143.176 "ls -a"'
+                        sh 'ssh ec2-user@52.76.143.176 "sudo rm -rf ChatAppAPI && sudo mkdir -p ChatAppAPI && cd ChatAppAPI && git clone $GITHUB_REPO_URL && docker login -u $USERNAME -p $PASSWORD && docker build -t $USERNAME/chat-app-api:latest -t $USERNAME/chat-app-api:2.1.$BUILD_NUMBER . && docker push $USERNAME/chat-app-api:latest $USERNAME/chat-app-api:2.1.$BUILD_NUMBER && docker run -dp 4090:4090 $USERNAME/chat-app-api:2.1.$BUILD_NUMBER && docker logout"'
                      }
                   }
                }
             }
-            // stage('Login docker') {
-            //    steps {
-            //       dir('DevopsChatApp') {
-            //          script {
-            //             sh 'docker login -u $USERNAME -p $PASSWORD'
-            //          }
-            //       }
-            //    }
-            // }
-            // stage('Docker build and push') {
-            //    steps {
-            //       dir('DevopsChatApp') {
-            //          script {
-            //             sh 'docker build -t $USERNAME/chat-app-api:latest -t $USERNAME/chat-app-api:$BUILD_NUMBER .'
-            //             sh 'docker push $USERNAME/chat-app-api:latest $USERNAME/chat-app-api:$BUILD_NUMBER'
-            //             sh 'docker run -dp 4090:4090 $USERNAME/chat-app-api:$BUILD_NUMBER'
-            //             sh 'docker logout'
-            //          }
-            //       }
-            //    }
-            // }
          }
       }
       stage('Deploy in develop environment') {
@@ -84,8 +54,9 @@ pipeline {
             branch 'develop'
          }
          stages {
-            stage('Cleanup docker') {
+            stage('') {
                steps {
+                  deleteDir()
                   dir('DevopsChatApp') {
                      script {
                         echo("Code pushed or merged in branch ${env.BRANCH_NAME}")
@@ -97,7 +68,7 @@ pipeline {
                   }
                }
             }
-            stage('Docker build and run in local') {
+            stage('') {
                steps {
                   dir('DevopsChatApp') {
                      script {
