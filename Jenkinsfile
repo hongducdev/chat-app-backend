@@ -8,11 +8,6 @@ pipeline {
       NODE_ENV='development'
    }
    stages{
-      stage('Checkout SCM') {
-         steps {
-            checkout scm
-         }
-      }
       stage('Fetch repository') {
          steps {
             dir('DevopsChatApp') {
@@ -63,3 +58,4 @@ pipeline {
       }
    }
 }
+
