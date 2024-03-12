@@ -23,7 +23,7 @@ pipeline {
             branch 'main'
          }
          stages {
-            stage('') {
+            stage {
                steps {
                   deleteDir()
                   dir('DevopsChatApp') {
@@ -37,7 +37,7 @@ pipeline {
                   }
                }
             }
-            stage('') {
+            stage {
                steps {
                   dir('DevopsChatApp') {
                      script {
@@ -54,7 +54,7 @@ pipeline {
             branch 'develop'
          }
          stages {
-            stage('') {
+            stage {
                steps {
                   deleteDir()
                   dir('DevopsChatApp') {
@@ -68,7 +68,7 @@ pipeline {
                   }
                }
             }
-            stage('') {
+            stage {
                steps {
                   dir('DevopsChatApp') {
                      script {
