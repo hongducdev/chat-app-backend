@@ -32,7 +32,7 @@ pipeline {
                   sh 'sudo docker rm $(docker ps -aq) || true'
                   sh 'sudo docker rmi $(docker images -q) || true'
                   sh 'ssh ec2-user@52.76.143.176'
-                  sh 'ssh ec2-user@52.76.143.176 "sudo rm -rf ChatAppAPI && sudo mkdir -p ChatAppAPI && cd ChatAppAPI && git clone $GITHUB_REPO_URL && docker login -u $USERNAME -p $PASSWORD && docker build -t $USERNAME/chat-app-api:latest -t $USERNAME/chat-app-api:2.1.$BUILD_NUMBER . && docker push $USERNAME/chat-app-api:latest $USERNAME/chat-app-api:2.1.$BUILD_NUMBER && docker run -dp 4090:4090 $USERNAME/chat-app-api:2.1.$BUILD_NUMBER && docker logout"'
+                  sh 'ssh ec2-user@52.76.143.176 "sudo rm -rf chat-app-api && git clone $GITHUB_REPO_URL && docker login -u $USERNAME -p $PASSWORD && docker build -t $USERNAME/chat-app-api:latest -t $USERNAME/chat-app-api:2.1.$BUILD_NUMBER . && docker push $USERNAME/chat-app-api:latest $USERNAME/chat-app-api:2.1.$BUILD_NUMBER && docker run -dp 4090:4090 $USERNAME/chat-app-api:2.1.$BUILD_NUMBER && docker logout"'
                }
             }
          }
