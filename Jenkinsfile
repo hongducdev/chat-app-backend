@@ -10,6 +10,7 @@ pipeline {
    stages{
       stage('Fetch repository') {
          steps {
+            deleteDir()
             dir('DevopsChatApp') {
                script {
                   // env.BRANCH_NAME = env.GIT_BRANCH.substring(env.GIT_BRANCH.lastIndexOf('/') + 1)
@@ -23,7 +24,6 @@ pipeline {
             branch 'develop'
          }
          steps {
-            deleteDir()
             dir('DevopsChatApp') {
                script {
                   echo("Code pushed or merged in branch ${env.BRANCH_NAME}")
@@ -42,7 +42,6 @@ pipeline {
             branch 'main'
          }
          steps {
-            deleteDir()
             dir('DevopsChatApp') {
                script {
                   echo("Code pushed or merged in branch ${env.BRANCH_NAME}")
