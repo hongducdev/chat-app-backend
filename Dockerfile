@@ -1,5 +1,5 @@
 FROM node:20.11.1
-WORKDIR /chat-app-api
+WORKDIR /chat-app-backend
 ADD . .
 RUN npm cache clean --force
 RUN npm i -g pnpm
