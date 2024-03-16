@@ -12,13 +12,12 @@ pipeline {
          steps {
             dir('DevopsChatApp') {
                script {
-                  // env.BRANCH_NAME = env.GIT_BRANCH.substring(env.GIT_BRANCH.lastIndexOf('/') + 1)
                   git branch: env.BRANCH_NAME, url: env.GITHUB_REPO_URL
                }
             }
          }
       }
-            stage('Deploy in develop') {
+      stage('Deploy in develop') {
          when {
             branch 'develop'
          }
