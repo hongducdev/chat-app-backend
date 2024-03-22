@@ -21,7 +21,7 @@ app.use(
    cors({
       origin: [
          'http://localhost:5173',
-         'http://chatapp.hongduccodedao.io.vn:4953',
+         'https://chatappreview.hongduccodedao.io.vn',
          'https://chatapp.hongduccodedao.io.vn',
       ],
       allowedHeaders: [
