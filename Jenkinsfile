@@ -30,6 +30,7 @@ pipeline {
                   sh 'sudo docker stop $(docker ps --filter status=running || exists -q) || true'
                   sh 'sudo docker rm $(docker ps -aq) || true'
                   sh 'sudo docker rmi $(docker images -q) || true'
+                  sh 'ls -a'
                   sh 'docker build -t chat-app-api .'
                   sh 'docker run -dp 4090:4090 chat-app-api'
                }
