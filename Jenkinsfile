@@ -57,18 +57,7 @@ pipeline {
             dir('DevopsChatApp') {
                script {
                   echo("Code pushed or merged in branch ${env.BRANCH_NAME}")
-                  sh '''ssh ec2-user@52.76.143.176 "bash ./kill_port.sh 4090
-                  && sudo docker system prune -af
-                  && sudo docker stop $(docker ps --filter status=running -q) || true
-                  && sudo docker rm $(docker ps -aq) || true
-                  && sudo docker rmi $(docker images -q) || true
-                  && sudo rm -rf ./chat-app-backend && git clone $GITHUB_REPO_URL && cp .env ./chat-app-backend
-                  && cd chat-app-backend
-                  && docker login -u $USERNAME -p $PASSWORD
-                  && docker build -t $USERNAME/chat-app-api:latest -t $USERNAME/chat-app-api:2.1.$BUILD_NUMBER .
-                  && docker push $USERNAME/chat-app-api:latest
-                  && docker run -dp 4090:4090 $USERNAME/chat-app-api:2.1.$BUILD_NUMBER
-                  && docker logout"'''
+                  sh '''ssh ec2-user@52.76.143.176 "bash ./kill_port.sh 4090 && sudo docker system prune -af && sudo docker stop $(docker ps --filter status=running -q) || true && sudo docker rm $(docker ps -aq) || true && sudo docker rmi $(docker images -q) || true && sudo rm -rf ./chat-app-backend && git clone $GITHUB_REPO_URL && cp .env ./chat-app-backend && cd chat-app-backend && docker login -u $USERNAME -p $PASSWORD && docker build -t $USERNAME/chat-app-api:latest -t $USERNAME/chat-app-api:2.1.$BUILD_NUMBER . && docker push $USERNAME/chat-app-api:latest && docker run -dp 4090:4090 $USERNAME/chat-app-api:2.1.$BUILD_NUMBER && docker logout"'''
                }
             }
          }
