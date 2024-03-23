@@ -22,9 +22,9 @@ app.use(
       origin: [
          'http://localhost:5173',
          'http://localhost:4953',
-         'https://chatappreview.hongduccodedao.io.vn',
+         'https://chatapppreview.hongduccodedao.io.vn',
          'https://chatapp.hongduccodedao.io.vn',
-         'https://chatappreview.hongduccodedao.id.vn',
+         'https://chatapppreview.hongduccodedao.id.vn',
          'https://chatapp.hongduccodedao.id.vn',
       ],
       allowedHeaders: [
