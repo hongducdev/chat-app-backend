@@ -24,6 +24,8 @@ app.use(
          'http://localhost:4953',
          'https://chatappreview.hongduccodedao.io.vn',
          'https://chatapp.hongduccodedao.io.vn',
+         'https://chatappreview.hongduccodedao.id.vn',
+         'https://chatapp.hongduccodedao.id.vn',
       ],
       allowedHeaders: [
          'Access-Control-Allow-Headers',
