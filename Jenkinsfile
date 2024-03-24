@@ -62,7 +62,8 @@ pipeline {
                   && sudo docker stop $(docker ps --filter status=running -q) || true
                   && sudo docker rm $(docker ps -aq) || true
                   && sudo docker rmi $(docker images -q) || true
-                  && sudo rm -rf ./chat-app-backend && git clone $GITHUB_REPO_URL && cp .env ./chat-app-backend
+                  && sudo rm -rf ./chat-app-backend 
+                  && git clone $GITHUB_REPO_URL && cp .env ./chat-app-backend
                   && cd chat-app-backend
                   && docker login -u $USERNAME -p $PASSWORD
                   && docker build -t $USERNAME/chat-app-api:latest -t $USERNAME/chat-app-api:2.1.$BUILD_NUMBER .
