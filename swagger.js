@@ -1,6 +1,6 @@
-import swaggerAutogen from 'swagger-autogen';
-import dotenv from 'dotenv';
-dotenv.config();
+import swaggerAutogen from 'swagger-autogen'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const doc = {
    info: {
@@ -11,13 +11,13 @@ const doc = {
    },
    host: process.env.HOST,
    schemes: ['https', 'http'],
-};
+}
 
-const outputFile = './swagger-output.json';
+const outputFile = './swagger-output.json'
 // const routes = ['./src/tests/index.route.js'];
-const routes = ['./src/server.js'];
+const routes = ['./src/server.js']
 
 /* NOTE: If you are using the express Router, you must pass in the 'routes' only the
 root file where the route starts, such as index.js, app.js, routes.js, etc ... */
 
-swaggerAutogen(outputFile, routes, doc);
+swaggerAutogen(outputFile, routes, doc)
